@@ -1,9 +1,18 @@
 @import "~bootstrap/scss/bootstrap";
 
-h1 {
-    color: red;
+body {
+    background-color: #444444;
 }
 
-body {
-    background-image: url("../img/bkg.jpg");
+.general-container {
+    width: 80vw;
+    height: 100vh;
+    margin-inline: auto;
+
+    .main-title {
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 2rem;
+    }
 }
