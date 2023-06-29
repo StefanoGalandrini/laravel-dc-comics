@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Comic extends Model
 {
@@ -12,32 +13,42 @@ class Comic extends Model
     protected $fillable = [
         'title',
         'description',
-        'series',
         'thumb',
         'price',
-        'type',
+        'series',
         'sale_date',
+        'type',
         'artists',
         'writers',
     ];
 
-    public function getWritersAttribute($value)
+    protected $casts = [
+        'artists' => 'array',
+        'writers' => 'array',
+    ];
+
+    protected $serializeAttributes = [
+        'artists',
+        'writers',
+    ];
+
+    public function setAttribute($key, $value)
     {
-        return unserialize($value);
+        if (in_array($key, $this->serializeAttributes) && is_array($value)) {
+            $value = serialize($value);
+        }
+
+        return parent::setAttribute($key, $value);
     }
 
-    public function getArtistsAttribute($value)
+    public function getAttribute($key)
     {
-        return unserialize($value);
-    }
+        $value = parent::getAttribute($key);
 
-    public function setWritersAttribute($value)
-    {
-        $this->attributes['writers'] = serialize($value);
-    }
+        if (in_array($key, $this->serializeAttributes) && is_string($value)) {
+            $value = unserialize($value);
+        }
 
-    public function setArtistsAttribute($value)
-    {
-        $this->attributes['artists'] = serialize($value);
+        return $value;
     }
 }
