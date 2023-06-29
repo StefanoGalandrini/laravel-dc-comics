@@ -18,9 +18,7 @@ class ComicsTableSeeder extends Seeder
         $comics = config("comics");
 
         foreach ($comics as $comic) {
-            foreach ($comics as $comic) {
-                Comic::create($comic);
-            }
+            Comic::create($comic);
         }
     }
 }
