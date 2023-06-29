@@ -22,33 +22,23 @@ class Comic extends Model
         'writers',
     ];
 
-    protected $casts = [
-        'artists' => 'array',
-        'writers' => 'array',
-    ];
-
-    protected $serializeAttributes = [
-        'artists',
-        'writers',
-    ];
-
-    public function setAttribute($key, $value)
+    public function getArtistsAttribute($value)
     {
-        if (in_array($key, $this->serializeAttributes) && is_array($value)) {
-            $value = serialize($value);
-        }
-
-        return parent::setAttribute($key, $value);
+        return explode(',', $value);
     }
 
-    public function getAttribute($key)
+    public function setArtistsAttribute($value)
     {
-        $value = parent::getAttribute($key);
+        $this->attributes['artists'] = implode(',', $value);
+    }
 
-        if (in_array($key, $this->serializeAttributes) && is_string($value)) {
-            $value = unserialize($value);
-        }
+    public function getWritersAttribute($value)
+    {
+        return explode(',', $value);
+    }
 
-        return $value;
+    public function setWritersAttribute($value)
+    {
+        $this->attributes['writers'] = implode(',', $value);
     }
 }

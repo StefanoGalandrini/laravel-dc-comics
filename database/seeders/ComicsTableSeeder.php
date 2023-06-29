@@ -18,17 +18,9 @@ class ComicsTableSeeder extends Seeder
         $comics = config("comics");
 
         foreach ($comics as $comic) {
-            Comic::create([
-                'title' => $comic['title'],
-                'description' => $comic['description'],
-                'series' => $comic['series'],
-                'thumb' => $comic['thumb'],
-                'price' => $comic['price'],
-                'type' => $comic['type'],
-                'sale_date' => $comic['sale_date'],
-                'artists' => serialize($comic['artists']),
-                'writers' => serialize($comic['writers']),
-            ]);
+            foreach ($comics as $comic) {
+                Comic::create($comic);
+            }
         }
     }
 }
