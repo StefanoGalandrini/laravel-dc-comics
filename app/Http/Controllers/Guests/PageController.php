@@ -10,7 +10,6 @@ class PageController extends Controller
 {
     public function home()
     {
-        $comics = Comic::all();
-        return view('home', ['comics' => $comics]);
+        return view('home');
     }
 }

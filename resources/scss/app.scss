@@ -42,18 +42,28 @@ body {
 
     li {
         white-space: nowrap;
+        height: 100%;
+    }
+
+    td {
+        height: 100%;
     }
 
     .actions {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 0.5rem;
+        height: 100%;
 
-        a {
-            width: 100%;
-            text-align: center;
+        .button-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, 1fr);
+            height: 100%;
+            align-content: center;
+
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
         }
     }
 }

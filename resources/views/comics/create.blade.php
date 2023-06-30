@@ -3,7 +3,7 @@
 @section('main')
 	<div class="container">
 		<h1>Add new comic</h1>
-		<a class="btn btn-primary" href="{{ route('home') }}">View</a>
+		<a class="btn btn-primary" href="{{ route('comics.index') }}">View</a>
 
 		<form action="{{ route('comics.store') }}" method="POST">
 			<div class="mb-3">

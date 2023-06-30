@@ -3,7 +3,7 @@
 @section('main')
 	<div class="container mt-2">
 		<h1>{{ $comic->title }}</h1>
-		<a class="btn btn-primary" href="{{ route('home') }}">View</a>
+		<a class="btn btn-primary" href="{{ route('comics.index') }}">View</a>
 
 		<div class="content">
 			<div class="image-container">
