@@ -52,7 +52,10 @@ class ComicController extends Controller
             ]
         );
 
-        $data = ($request->all());
+        $data = $request->all();
+
+        // Generate random 'thumb' starting with base "Lorem Picsum" service
+        $data['thumb'] .= mt_rand();
 
         $newComic = new Comic();
 
