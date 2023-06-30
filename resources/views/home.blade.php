@@ -13,7 +13,7 @@
 	<div class="bkg">
 		<div class="overlay">
 			<h1 class="main-title">DC COMICS</h1>
-			<p class="descript">Esplora la nsotra collezione di fumetti</p>
+			<p class="descript">Esplora la nostra collezione di fumetti</p>
 			<p class="descript">cliccando sul bottone qui sotto</p>
 			<a class="btn btn-danger action-button" href="{{ route('comics.index') }}">View</a>
 		</div>

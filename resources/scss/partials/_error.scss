@@ -1,0 +1,73 @@
+.error-bkg {
+    background-image: url("../img/error-bkg.jpg");
+    object-position: center center;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.error-overlay {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+
+    .error-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 60%;
+        height: 50%;
+        transform: translateY(-25%);
+
+        .left-side,
+        .right-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .error-title {
+            color: rgb(100, 100, 100);
+            font-size: 5rem;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .right-side {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .error-type,
+            .error-descript {
+                text-align: right;
+                color: rgb(224, 135, 0);
+            }
+
+            .error-type {
+                font-size: 5rem;
+                margin-bottom: 2rem;
+            }
+
+            .error-descript {
+                font-size: 3rem;
+            }
+        }
+    }
+
+    .btn {
+        margin-top: 2rem;
+        text-align: center;
+        padding: 0.7rem 2.5rem;
+        font-size: 1.2rem;
+    }
+}
