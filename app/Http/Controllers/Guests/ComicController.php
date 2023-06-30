@@ -15,7 +15,7 @@ class ComicController extends Controller
      */
     public function index()
     {
-        $comics = Comic::paginate(5);
+        $comics = Comic::orderBy('id')->paginate(3);
         return view('comics.index', ['comics' => $comics]);
     }
 
@@ -37,7 +37,38 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        return "Form inviato";
+        //data validation
+        $request->validate(
+            [
+                'title'         => 'required|string|max:100',
+                'description'   => 'required|string',
+                'thumb'         => 'required|url|max:350',
+                'price'         => 'required|string|max:10',
+                'series'        => 'required|string|max:50',
+                'sale_date'     => 'required|date|before:today',
+                'type'          => 'required|string|max:20',
+                'artists'       => 'required|string|max:800',
+                'writers'       => 'required|string|max:800',
+            ]
+        );
+
+        $data = ($request->all());
+
+        $newComic = new Comic();
+
+        $newComic->title        = $data['title'];
+        $newComic->description  = $data['description'];
+        $newComic->thumb        = $data['thumb'];
+        $newComic->price        = '$ ' . number_format($data['price'], 2, '.', '');
+        $newComic->series       = $data['series'];
+        $newComic->sale_date    = $data['sale_date'];
+        $newComic->type         = $data['type'];
+        $newComic->artists      = explode(',', $data['artists']);
+        $newComic->writers      = explode(',', $data['writers']);
+
+
+        $newComic->save();
+        return redirect()->route('comics.show', ['comic' => $newComic->id]);
     }
 
     /**

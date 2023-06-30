@@ -15,7 +15,7 @@
 				<th>Type</th>
 				<th>Artists</th>
 				<th>Writers</th>
-				<th>ACTIONS</th>
+				<th class="buttons">ACTIONS</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -56,4 +56,5 @@
 			@endforeach
 		</tbody>
 	</table>
+	{{ $comics->links() }}
 @endsection

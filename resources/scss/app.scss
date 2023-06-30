@@ -53,17 +53,15 @@ body {
         height: 100%;
 
         .button-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: repeat(3, 1fr);
-            height: 100%;
-            align-content: center;
-
             a {
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                display: inline;
+                // align-items: center;
+                // justify-content: center;
             }
         }
     }
+}
+
+.buttons {
+    width: 15%;
 }
