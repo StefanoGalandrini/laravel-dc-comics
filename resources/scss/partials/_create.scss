@@ -1,0 +1,39 @@
+$primary-color: #3490dc;
+
+.container {
+    max-width: 80vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .btn {
+        border: none;
+        color: white;
+        padding: 1rem 3rem;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1.2rem;
+        margin: 2rem 0;
+        cursor: pointer;
+    }
+
+    .mb-3 {
+        width: 100%;
+    }
+
+    form {
+        color: white;
+        width: 100%;
+
+        .short-fields {
+            display: flex;
+            column-gap: 2rem;
+        }
+
+        label {
+            color: $primary-color;
+        }
+    }
+}
