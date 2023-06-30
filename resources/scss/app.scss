@@ -1,4 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
+@import "partials/home";
 @import "partials/show";
 @import "partials/create";
 
@@ -30,14 +31,15 @@ body {
         color: white;
         text-align: center;
         font-weight: bold;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
 
     .comic-thumb {
-        width: 200px;
+        width: 130px;
         height: auto;
         aspect-ratio: 1 / 1.5;
         object-fit: cover;
+        box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.5);
     }
 
     li {
@@ -45,23 +47,54 @@ body {
         height: 100%;
     }
 
+    tr,
     td {
         height: 100%;
+        font-size: 1rem;
     }
 
     .actions {
         height: 100%;
-
-        .button-container {
-            a {
-                display: inline;
-                // align-items: center;
-                // justify-content: center;
-            }
-        }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
     }
 }
 
-.buttons {
+.description {
+    width: 35%;
+}
+
+.info {
+    width: 12%;
+}
+
+.title {
     width: 15%;
+}
+
+.buttons {
+    width: 7%;
+}
+
+.comic-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.comic-description {
+    font-size: 0.8rem;
+}
+
+.comic-info {
+    margin: 0;
+}
+
+.comic-rows {
+    padding-bottom: 1.5rem;
+}
+
+.comic-label {
+    font-weight: bold;
 }

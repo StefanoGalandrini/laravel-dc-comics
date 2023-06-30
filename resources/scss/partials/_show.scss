@@ -1,7 +1,7 @@
 $primary-color: #3490dc;
 
-.container {
-    max-width: 80vw;
+.show-container {
+    width: 80vw;
     max-height: 100vh;
     margin: 0 auto;
     display: flex;
@@ -10,6 +10,7 @@ $primary-color: #3490dc;
 
     h1 {
         font-size: 3rem;
+        color: white;
     }
 
     .btn {
@@ -24,13 +25,13 @@ $primary-color: #3490dc;
         cursor: pointer;
     }
 
-    .content {
+    .show-content {
+        width: 100%;
         display: flex;
         gap: 3rem;
 
         .image-container {
-            flex: 25%;
-            max-width: 30%;
+            width: 30%;
 
             img {
                 width: 100%;
@@ -40,14 +41,16 @@ $primary-color: #3490dc;
             }
         }
 
-        .text-container {
-            flex: 75%;
+        .show-text-container {
+            width: 70%;
 
             .description {
+                width: 100%;
                 margin-bottom: 3rem;
             }
 
             .info {
+                width: 100%;
                 display: flex;
                 justify-content: space-between;
                 .left,
@@ -57,24 +60,27 @@ $primary-color: #3490dc;
                 }
             }
         }
-    }
 
-    .info-text {
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin-bottom: 1rem;
-        color: $primary-color;
-    }
+        .info-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: $primary-color;
+        }
 
-    .info-value {
-        color: white;
-        font-size: 1rem;
-        font-weight: normal;
+        .info-value {
+            color: white;
+            font-size: 1rem;
+            font-weight: normal;
+        }
     }
 
     ul {
+        margin-left: -2rem;
+
         li {
             margin-bottom: 0.25rem;
+            color: white;
         }
     }
 }

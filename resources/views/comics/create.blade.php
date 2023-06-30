@@ -111,28 +111,7 @@
 			</div>
 
 
-			{{-- <div class="mb-3">
-				<label for="artists" class="form-label">Artists</label>
-				<textarea class="form-control @error('artists') is-invalid @enderror" id="artists" name="artists"
-				 placeholder="Enter the artists separated by commas">{{ old('artists') }}</textarea>
-				<div class="invalid-feedback">
-					@error('artists')
-						{{ $message }}
-					@enderror
-				</div>
-			</div>
-			<div class="mb-3">
-				<label for="writers" class="form-label">Writers</label>
-				<textarea class="form-control @error('writers') is-invalid @enderror" id="writers" name="writers"
-				 placeholder="Enter the writers separated by commas">{{ old('writers') }}</textarea>
-				<div class="invalid-feedback">
-					@error('writers')
-						{{ $message }}
-					@enderror
-				</div>
-			</div> --}}
-
-			<button type="submit" class="btn btn-warning">Submit</button>
+			<button type="submit" class="btn btn-danger">Submit</button>
 		</form>
 	</div>
 @endsection

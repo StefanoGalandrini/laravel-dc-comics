@@ -1,15 +1,15 @@
 @extends('layouts.base')
 
 @section('main')
-	<div class="container mt-2">
+	<div class="show-container mt-2">
 		<h1>{{ $comic->title }}</h1>
-		<a class="btn btn-primary" href="{{ route('comics.index') }}">View</a>
+		<a class="btn btn-danger" href="{{ route('comics.index') }}">View</a>
 
-		<div class="content">
+		<div class="show-content">
 			<div class="image-container">
 				<img src="{{ $comic->thumb }}" alt="{{ $comic->title }}">
 			</div>
-			<div class="text-container">
+			<div class="show-text-container">
 				<p class="description info-text">Description: <span class="info-value">{{ $comic->description }}</span></p>
 
 				<div class="info">

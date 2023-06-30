@@ -6,13 +6,10 @@
 		<thead>
 			<tr>
 				<th>ID</th>
-				<th>Title</th>
-				<th>Description</th>
+				<th class="title">Title</th>
+				<th class="description">Description</th>
 				<th>Thumb</th>
-				<th>Price</th>
-				<th>Series</th>
-				<th>Sale Date</th>
-				<th>Type</th>
+				<th class="info">Info</th>
 				<th>Artists</th>
 				<th>Writers</th>
 				<th class="buttons">ACTIONS</th>
@@ -22,13 +19,27 @@
 			@foreach ($comics as $comic)
 				<tr>
 					<td>{{ $comic->id }}</td>
-					<td>{{ $comic->title }}</td>
-					<td>{{ $comic->description }}</td>
+					<td class="comic-title">{{ $comic->title }}</td>
+					<td><span class="comic-description">{{ $comic->description }}</span></td>
 					<td><img class="comic-thumb" src="{{ $comic->thumb }}" alt="Comic Thumbnail"></td>
-					<td>{{ $comic->price }}</td>
-					<td>{{ $comic->series }}</td>
-					<td>{{ $comic->sale_date }}</td>
-					<td>{{ $comic->type }}</td>
+					<td>
+						<table class="comic-info">
+							<tr>
+								<td class="comic-rows"><span class="comic-label">Price: </span>{{ $comic->price }}</td>
+							</tr>
+							<tr>
+								<td class="comic-rows"><span class="comic-label">Series: </span>{{ $comic->series }}</td>
+							</tr>
+							<tr>
+								<td class="comic-rows"><span class="comic-label">Sale Date: </span>{{ $comic->sale_date }}</td>
+							</tr>
+							<tr>
+								<td class="comic-rows"><span class="comic-label">Type: </span>{{ $comic->type }}</td>
+							</tr>
+						</table>
+					</td>
+
+
 					<td>
 						<ul>
 							@foreach ($comic->artists as $artist)
@@ -48,7 +59,7 @@
 						</ul>
 					</td>
 					<td class="actions">
-						<a class="btn btn-primary action-button" href="{{ route('home') }}">View</a>
+						<a class="btn btn-primary action-button" href="{{ route('home') }}">Home</a>
 						<a class="btn btn-success action-button" href="{{ route('comics.show', ['comic' => $comic->id]) }}">Show</a>
 						<a class="btn btn-warning action-button" href="{{ route('comics.create') }}">Create</a>
 					</td>
