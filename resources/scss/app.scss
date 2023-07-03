@@ -35,6 +35,13 @@ body {
         margin-bottom: 1rem;
     }
 
+    .general-buttons {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        justify-content: center;
+    }
+
     .comic-thumb {
         width: 130px;
         height: auto;
@@ -46,6 +53,8 @@ body {
     li {
         white-space: nowrap;
         height: 100%;
+        font-size: 0.8rem;
+        margin-left: -1.5rem;
     }
 
     tr,
@@ -98,4 +107,13 @@ body {
 
 .comic-label {
     font-weight: bold;
+}
+
+.pagination {
+    width: 100%;
+    display: flex;
+
+    li {
+        margin: 0 0;
+    }
 }

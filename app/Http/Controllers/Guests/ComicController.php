@@ -7,7 +7,22 @@ use App\Models\Comic;
 use Illuminate\Http\Request;
 
 class ComicController extends Controller
+
 {
+
+    private $validations = [
+        'title'         => 'required|string|max:100',
+        'description'   => 'required|string',
+        'thumb'         => 'required|url|max:350',
+        'price'         => 'required|string|max:10',
+        'series'        => 'required|string|max:50',
+        'sale_date'     => 'required|date|before:today',
+        'type'          => 'required|string|max:20',
+        'artists'       => 'required|string|max:800',
+        'writers'       => 'required|string|max:800',
+    ];
+
+
     /**
      * Display a listing of the resource.
      *
@@ -38,19 +53,8 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         //data validation
-        $request->validate(
-            [
-                'title'         => 'required|string|max:100',
-                'description'   => 'required|string',
-                'thumb'         => 'required|url|max:350',
-                'price'         => 'required|string|max:10',
-                'series'        => 'required|string|max:50',
-                'sale_date'     => 'required|date|before:today',
-                'type'          => 'required|string|max:20',
-                'artists'       => 'required|string|max:800',
-                'writers'       => 'required|string|max:800',
-            ]
-        );
+        $request->validate($this->validations);
+
 
         $data = $request->all();
 
@@ -80,9 +84,8 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Comic $comic)
     {
-        $comic = Comic::findOrFail($id);
         return view('comics.show', ['comic' => $comic]);
     }
 
@@ -92,9 +95,9 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comic $comic)
     {
-        //
+        return view('comics.edit', ['comic' => $comic]);
     }
 
     /**
@@ -104,9 +107,34 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+
+        // validare i dati
+        $request->validate($this->validations);
+
+        $data = $request->all();
+
+
+
+        // aggiornare i dati
+        $comic->title        = $data['title'];
+        $comic->description  = $data['description'];
+        $comic->thumb        = $data['thumb'];
+        $comic->price        = $data['price'];
+        $comic->series       = $data['series'];
+        $comic->sale_date    = $data['sale_date'];
+        $comic->type         = $data['type'];
+        $comic->artists      = explode(',', $data['artists']);
+        $comic->writers      = explode(',', $data['writers']);
+
+        $comic->update();
+
+
+        // redirect
+        return to_route('comics.show', ['comic' => $comic->id]);
+        //        return view('comics.edit', ['comic' => $comic])
+
     }
 
     /**
@@ -115,8 +143,17 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+        return to_route('comics.index')->with('delete_success', "Il fumetto \"$comic->title\" è stata eliminata");
+    }
+
+
+    public function restore($id)
+    {
+        Comic::withTrashed()->where('id', $id)->restore();
+        $comic = Comic::find($id);
+        return to_route('comics.index')->with('restore_success', $comic);
     }
 }

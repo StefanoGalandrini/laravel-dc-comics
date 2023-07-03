@@ -2,6 +2,24 @@
 
 @section('main')
 	<h1 class="main-title">DC COMICS</h1>
+	<div class="general-buttons">
+		<a class="btn btn-primary action-button" href="{{ route('home') }}">Home</a>
+		<a class="btn btn-warning action-button" href="{{ route('comics.create') }}">Create</a>
+	</div>
+
+	@if (session('delete_success'))
+		<div class="alert alert-danger">
+
+			{{ session('delete_success') }}
+
+			<form action="{{ route('comics.restore', ['comic' => $comic]) }}" method="POST">
+				@csrf
+				<button type="submit" class="btn btn-primary">Restore</button>
+			</form>
+
+		</div>
+	@endif
+
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -59,9 +77,9 @@
 						</ul>
 					</td>
 					<td class="actions">
-						<a class="btn btn-primary action-button" href="{{ route('home') }}">Home</a>
 						<a class="btn btn-success action-button" href="{{ route('comics.show', ['comic' => $comic->id]) }}">Show</a>
-						<a class="btn btn-warning action-button" href="{{ route('comics.create') }}">Create</a>
+						<a class="btn btn-danger action-button" href="{{ route('comics.edit', ['comic' => $comic->id]) }}">Edit</a>
+
 					</td>
 				</tr>
 			@endforeach

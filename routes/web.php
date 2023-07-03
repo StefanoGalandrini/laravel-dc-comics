@@ -25,3 +25,4 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 // Route::get('/comics/{comic}', [ComicController::class, 'show'])->name('comics.show');
 
 Route::resource('comics', ComicController::class);
+Route::post('/comics/{comic}/restore', [ComicController::class, 'restore'])->name('comics.restore');

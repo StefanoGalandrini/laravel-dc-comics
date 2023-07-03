@@ -3,7 +3,11 @@
 @section('main')
 	<div class="show-container mt-2">
 		<h1>{{ $comic->title }}</h1>
-		<a class="btn btn-danger" href="{{ route('comics.index') }}">View</a>
+		<div>
+			<a class="btn btn-warning" href="{{ route('comics.index') }}">View</a>
+			<a class="btn btn-danger action-button" href="{{ route('comics.edit', ['comic' => $comic->id]) }}">Edit</a>
+		</div>
+
 
 		<div class="show-content">
 			<div class="image-container">
