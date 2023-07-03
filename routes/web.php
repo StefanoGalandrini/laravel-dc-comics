@@ -24,5 +24,7 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 // Route::post('/comics', [ComicController::class, 'store'])->name('comics.store');
 // Route::get('/comics/{comic}', [ComicController::class, 'show'])->name('comics.show');
 
+Route::get('/comics/trashed',                   [ComicController::class, 'trashed'])->name('comics.trashed');
+Route::post('/comics/{comic}/restore',          [ComicController::class, 'restore'])->name('comics.restore');
+Route::delete('/comics/{comic}/harddelete',     [ComicController::class, 'harddelete'])->name('comics.harddelete');
 Route::resource('comics', ComicController::class);
-Route::post('/comics/{comic}/restore', [ComicController::class, 'restore'])->name('comics.restore');

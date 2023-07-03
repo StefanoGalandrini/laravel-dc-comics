@@ -2,23 +2,31 @@
 
 @section('main')
 	<h1 class="main-title">DC COMICS</h1>
+
+	{{-- Messaggio di cancellazione e bottone di ripristino --}}
+	@if (session('delete_success'))
+		@php $comic = session('delete_success') @endphp
+		<div class="alert alert-danger">
+			Il fumetto "{{ $comic->title }}" è stato eliminato
+			<form action="{{ route('comics.restore', ['comic' => $comic]) }}" method="post">
+				@csrf
+				<button class="btn btn-danger">Ripristina</button>
+			</form>
+		</div>
+	@endif
+
+	@if (session('restore_success'))
+		@php $comic = session('restore_success') @endphp
+		<div class="alert alert-success">
+			Il fumetto "{{ $comic->title }}" è stato ripristinato
+		</div>
+	@endif
+
 	<div class="general-buttons">
 		<a class="btn btn-primary action-button" href="{{ route('home') }}">Home</a>
 		<a class="btn btn-warning action-button" href="{{ route('comics.create') }}">Create</a>
+		<a class="btn btn-danger action-button" href="{{ route('comics.trashed') }}">Trashcan</a>
 	</div>
-
-	@if (session('delete_success'))
-		<div class="alert alert-danger">
-
-			{{ session('delete_success') }}
-
-			<form action="{{ route('comics.restore', ['comic' => $comic]) }}" method="POST">
-				@csrf
-				<button type="submit" class="btn btn-primary">Restore</button>
-			</form>
-
-		</div>
-	@endif
 
 	<table class="table table-striped">
 		<thead>

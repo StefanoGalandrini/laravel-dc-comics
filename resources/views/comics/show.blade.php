@@ -3,9 +3,18 @@
 @section('main')
 	<div class="show-container mt-2">
 		<h1>{{ $comic->title }}</h1>
+
 		<div>
 			<a class="btn btn-warning" href="{{ route('comics.index') }}">View</a>
-			<a class="btn btn-danger action-button" href="{{ route('comics.edit', ['comic' => $comic->id]) }}">Edit</a>
+			<a class="btn btn-secondary action-button" href="{{ route('comics.edit', ['comic' => $comic->id]) }}">Edit</a>
+
+			{{-- Soft Delete --}}
+			<form action="{{ route('comics.destroy', ['comic' => $comic->id]) }}" method="POST">
+				@csrf
+				@method('DELETE')
+				<button type="submit" class="btn btn-danger">Delete</button>
+			</form>
+
 		</div>
 
 
