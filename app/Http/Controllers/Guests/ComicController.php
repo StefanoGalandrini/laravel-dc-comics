@@ -14,7 +14,7 @@ class ComicController extends Controller
         'title'         => 'required|string|max:100',
         'description'   => 'required|string',
         'thumb'         => 'required|url|max:350',
-        'price'         => 'required|string|max:10',
+        'price'         => 'required|numeric|max:9999.99',
         'series'        => 'required|string|max:50',
         'sale_date'     => 'required|date|before:today',
         'type'          => 'required|string|max:20',
@@ -169,6 +169,6 @@ class ComicController extends Controller
         $comic = Comic::withTrashed()->find($id);
         $comic->forceDelete();
 
-        return view('comics.trashed')->with('delete_success', $comic);
+        return redirect()->route('comics.trashed')->with('delete_success', $comic);
     }
 }

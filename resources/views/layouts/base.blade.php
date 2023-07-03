@@ -15,6 +15,14 @@
 		@yield('main')
 	</div>
 
+
+	<script>
+		document.getElementById('confirm').addEventListener('click', function(deleteConfirm) {
+			if (!window.confirm('Are you sure?')) {
+				deleteConfirm.preventDefault();
+			}
+		});
+	</script>
 </body>
 
 </html>
